@@ -1,22 +1,22 @@
 /* reference link https://www.w3schools.com/howto/howto_css_topnav_centered.asp */
 /* Style the links inside the navigation bar */
-  .topnav h2 {
+  /* .topnav h2 {
     float: left;
     color: dodgerblue;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 40px;
-  }
+  } */
   
   /* Centered section inside the top navigation */
-   .topnav-centered h2 {
+   /* .topnav-centered h2 {
     float: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+  } */
   
   
   /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
