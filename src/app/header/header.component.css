@@ -10,13 +10,14 @@
   } */
   
   /* Centered section inside the top navigation */
-   /* .topnav-centered h2 {
+    .topnav-centered h2 {
     float: none;
     position: absolute;
+    color: dodgerblue;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  } */
+  } 
   
   
   /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
