@@ -13,6 +13,11 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { GraphsComponent } from './graphs/graphs.component';
+import { PersonsListComponent } from './persons-list/persons-list.component';
+import { PersonUpdateComponent } from './persons-list/person-update/person-update.component';
+import { PersonDeleteComponent } from './persons-list/person-delete/person-delete.componen';
+import { PersonNewComponent } from './persons-list/person-new/person-new.component';
+import { PersonEditComponent } from './persons-list/person-edit/person-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { GraphsComponent } from './graphs/graphs.component';
     FooterComponent,
     LoginComponent,
     MenuComponent,
-    GraphsComponent
+    GraphsComponent,
+    PersonsListComponent,
+    PersonUpdateComponent,
+    PersonDeleteComponent,
+    PersonNewComponent,
+    PersonEditComponent
 
   ],
   imports: [
