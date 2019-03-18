@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Block } from '../block.model';
 
 @Component({
@@ -11,9 +11,16 @@ export class BlockNavigationComponent implements OnInit{
         new Block('Block 1', 5),
         new Block('Block 2', 3)
     ]
+    @Output() blockClickEmitter = new EventEmitter<string>();
+    
 
     constructor() { }
+
     ngOnInit() {
 
+    }
+
+    onClick(arg: string){
+        this.blockClickEmitter.emit(arg);
     }
 }

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./blocks.component.css']
 })
 export class BlocksComponent{
+    graphComponentFlag: boolean = true;
 
+    onNavigate(isClicked: string){
+        if(isClicked=='clicked'){
+            this.graphComponentFlag = false;
+        }
+    }
 }

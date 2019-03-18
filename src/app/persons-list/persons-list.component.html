@@ -8,11 +8,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let person of persons">
-                <td>{{person.p_name}}</td>
-                <td>{{person.p_address}}</td>
-                <td>{{person.p_phone}}</td>
-            </tr>
+            <ng-content></ng-content>
         </tbody>
     </table>
 </div>
