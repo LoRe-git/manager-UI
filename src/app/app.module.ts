@@ -18,6 +18,7 @@ import { PersonUpdateComponent } from './persons-list/person-update/person-updat
 import { PersonDeleteComponent } from './persons-list/person-delete/person-delete.componen';
 import { PersonNewComponent } from './persons-list/person-new/person-new.component';
 import { PersonEditComponent } from './persons-list/person-edit/person-edit.component';
+import { BlockSelectionService } from './shared/blockselection.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { PersonEditComponent } from './persons-list/person-edit/person-edit.comp
     FormsModule
     // HttpModule
   ],
-  providers: [],
+  providers: [BlockSelectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Block } from '../block.model';
+
+import { Block } from '../../shared/block.model';
+import { BlockSelectionService } from '../../shared/blockselection.service';
 
 @Component({
     selector: 'app-block-navigation',
@@ -8,19 +10,20 @@ import { Block } from '../block.model';
 })
 export class BlockNavigationComponent implements OnInit{
     blocks: Block[] = [
-        new Block('Block 1', 5),
-        new Block('Block 2', 3)
+        new Block('Block 1', 5, 1),
+        new Block('Block 2', 3, 2)
     ]
-    @Output() blockClickEmitter = new EventEmitter<string>();
+    @Output() blockClickEmitter = new EventEmitter<number>();
     
 
-    constructor() { }
+    constructor(private blockSelectionService: BlockSelectionService) { }
 
     ngOnInit() {
 
     }
 
-    onClick(arg: string){
+    onClick(arg: number){
         this.blockClickEmitter.emit(arg);
+        this.blockSelectionService.setSelectedBlock(arg);
     }
 }

@@ -5,10 +5,17 @@
                 <th>Name</th>
                 <th>Address</th>
                 <th>Phone</th>
+                <th>Block ID</th>
             </tr>
         </thead>
         <tbody>
-            <ng-content></ng-content>
+            <!-- <ng-content class="table table-striped table-hover"></ng-content> -->
+            <tr *ngFor = "let person of persons">
+                    <td *ngIf="person.block_id === selectedBlockId">{{person.p_name}}</td>
+                    <td *ngIf="person.block_id === selectedBlockId">{{person.p_address}}</td>
+                    <td *ngIf="person.block_id === selectedBlockId">{{person.p_phone}}</td>
+                    <td *ngIf="person.block_id === selectedBlockId">{{person.block_id}}</td>
+                </tr>
         </tbody>
     </table>
 </div>

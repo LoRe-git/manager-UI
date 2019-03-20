@@ -8,9 +8,7 @@ import { Component } from '@angular/core';
 export class BlocksComponent{
     graphComponentFlag: boolean = true;
 
-    onNavigate(isClicked: string){
-        if(isClicked=='clicked'){
-            this.graphComponentFlag = false;
-        }
+    onNavigate(){
+        this.graphComponentFlag = false;
     }
 }
