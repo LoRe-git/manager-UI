@@ -13,12 +13,12 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { GraphsComponent } from './graphs/graphs.component';
-import { PersonsListComponent } from './persons-list/persons-list.component';
-import { PersonUpdateComponent } from './persons-list/person-update/person-update.component';
-import { PersonDeleteComponent } from './persons-list/person-delete/person-delete.componen';
-import { PersonNewComponent } from './persons-list/person-new/person-new.component';
-import { PersonEditComponent } from './persons-list/person-edit/person-edit.component';
-import { BlockSelectionService } from './shared/blockselection.service';
+import { BlockSelectionService } from './shared/service/blockselection.service';
+import { TenantsListComponent } from './tenants-list/tenants-list.component';
+import { TenantUpdateComponent } from './tenants-list/tenant-update/tenant-update.component';
+import { TenantDeleteComponent } from './tenants-list/tenant-delete/tenant-delete.component';
+import { TenantNewComponent } from './tenants-list/tenant-new/tenant-new.component';
+import { TenantService } from './shared/service/tenant.service';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,10 @@ import { BlockSelectionService } from './shared/blockselection.service';
     LoginComponent,
     MenuComponent,
     GraphsComponent,
-    PersonsListComponent,
-    PersonUpdateComponent,
-    PersonDeleteComponent,
-    PersonNewComponent,
-    PersonEditComponent
+    TenantsListComponent,
+    TenantUpdateComponent,
+    TenantDeleteComponent,
+    TenantNewComponent
 
   ],
   imports: [
@@ -44,7 +43,7 @@ import { BlockSelectionService } from './shared/blockselection.service';
     FormsModule
     // HttpModule
   ],
-  providers: [BlockSelectionService],
+  providers: [BlockSelectionService, TenantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

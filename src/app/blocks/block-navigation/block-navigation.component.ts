@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
-import { Block } from '../../shared/block.model';
-import { BlockSelectionService } from '../../shared/blockselection.service';
+import { Block } from '../../shared/model/block.model';
+import { BlockSelectionService } from '../../shared/service/blockselection.service';
 
 @Component({
     selector: 'app-block-navigation',
