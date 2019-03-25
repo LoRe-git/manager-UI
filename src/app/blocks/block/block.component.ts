@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit{
+    displayAllFlag: boolean = false;
+
     constructor() { }
     ngOnInit() {
     }
+    displayAll(arg: string){
+        if(arg === 'true'){
+            this.displayAllFlag = true;
+        }
+    }
+
 }

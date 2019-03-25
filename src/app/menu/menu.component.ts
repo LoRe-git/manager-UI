@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
     selector: 'app-menu',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./menu.component.css']
 })
 export class MenuComponent{
+    @Output() displayFlagEmitter = new EventEmitter<string>();
+
+    constructor() { }
+
+    displayAll(){
+        this.displayFlagEmitter.emit('true');
+    }
 
 }

@@ -6,8 +6,7 @@ import { TenantService } from '../shared/service/tenant.service';
 @Component({
   selector: 'app-tenants-list',
   templateUrl: './tenants-list.component.html',
-  styleUrls: ['./tenants-list.component.css'],
-  providers: [TenantService]
+  styleUrls: ['./tenants-list.component.css']
 })
 export class TenantsListComponent implements OnInit{
   selectedBlockId: number;
@@ -17,7 +16,12 @@ export class TenantsListComponent implements OnInit{
 
   ngOnInit(){
       this.selectedBlockId = this.blockSelectionService.selectedBLockId;
-      this.tenants = this.tenantService.allTenants;
+      this.tenants = this.tenantService.getAllTenants();
+      this.tenantService.tenantChangedEvent.subscribe(
+        (latestTenants: Tenant[]) => {
+          this.tenants = latestTenants;
+        }
+      );
   }
 
   onDelete(deletedTenant: Tenant){

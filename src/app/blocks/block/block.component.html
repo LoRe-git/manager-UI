@@ -1,7 +1,8 @@
-<app-menu></app-menu>
+<app-menu (displayFlagEmitter) = "displayAll($event)"></app-menu>
 <hr>
 
 <!-- TODO: remove below component and add dynamically -->
-<app-tenants-list></app-tenants-list>
-
-<hr>
+<div  *ngIf = 'displayAllFlag'>
+    <app-tenants-list></app-tenants-list>
+    <hr>
+</div>
