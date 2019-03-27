@@ -5,19 +5,20 @@
         <div class="col-xs-12">
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-space">New Tenant</button>
+                    <button type="button" class="btn btn-success btn-space" (click) = "selectComponent('tenant_new')">New Tenant</button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary btn-space" (click) = "displayAll()">Display All</button>
+                    <button type="button" class="btn btn-primary btn-space" (click) = "selectComponent('tenants_list')">Display All</button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info btn-space">Update Tenant</button>
+                    <button type="button" class="btn btn-info btn-space" (click) = "selectComponent('tenant_update')">Update Tenant</button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-warning btn-space">Vecate Tenant</button>
+                    <button type="button" class="btn btn-warning btn-space" (click) = "selectComponent('tenant_delete')">Vecate Tenant</button>
                 </div>
+                <!-- TODO: create component for the below functionality -->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info btn-space">Search Tenant</button>
+                    <button type="button" class="btn btn-info btn-space" (click) = "selectComponent('tenant_search')">Search Tenant</button>
                 </div>
             </div>
         </div>

@@ -11,8 +11,8 @@ export class MenuComponent{
 
     constructor() { }
 
-    displayAll(){
-        this.displayFlagEmitter.emit('true');
+    selectComponent(selectionType: string){
+        this.displayFlagEmitter.emit(selectionType);
     }
 
 }

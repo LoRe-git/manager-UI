@@ -19,6 +19,7 @@ import { TenantUpdateComponent } from './tenants-list/tenant-update/tenant-updat
 import { TenantDeleteComponent } from './tenants-list/tenant-delete/tenant-delete.component';
 import { TenantNewComponent } from './tenants-list/tenant-new/tenant-new.component';
 import { TenantService } from './shared/service/tenant.service';
+import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TenantService } from './shared/service/tenant.service';
     TenantsListComponent,
     TenantUpdateComponent,
     TenantDeleteComponent,
-    TenantNewComponent
+    TenantNewComponent,
+    TenantSearchComponent
 
   ],
   imports: [

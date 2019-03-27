@@ -1,8 +1,36 @@
-<app-menu (displayFlagEmitter) = "displayAll($event)"></app-menu>
+<app-menu (displayFlagEmitter) = "onSelected($event)"></app-menu>
 <hr>
 
 <!-- TODO: remove below component and add dynamically -->
-<div  *ngIf = 'displayAllFlag'>
+<div  *ngIf = "cmpSelectionType === 'tenants_list'">
     <app-tenants-list></app-tenants-list>
-    <hr>
 </div>
+
+<div  *ngIf = "cmpSelectionType === 'tenant_new'">
+    <app-tenant-new></app-tenant-new>
+</div>
+
+<div  *ngIf = "cmpSelectionType === 'tenant_update'">
+    <app-tenant-update></app-tenant-update>
+</div>
+
+<div  *ngIf = "cmpSelectionType === 'tenant_delete'">
+    <app-tenant-delete></app-tenant-delete>
+</div>
+
+<div  *ngIf = "cmpSelectionType === 'tenant_search'">
+    <app-tenant-search></app-tenant-search>
+</div>
+<div  *ngIf = "cmpSelectionType === 'none'">
+        <app-graphs></app-graphs>
+</div>
+
+<hr>
+<!-- <div  [ngSwitch] = "cmpSelectionType">
+    <app-tenants-list *ngSwitchCase = "tenants_list"></app-tenants-list>
+    <app-tenant-new *ngSwitchCase = "tenant_new"></app-tenant-new>
+    <app-tenant-update *ngSwitchCase = "tenant_update"></app-tenant-update>
+    <app-tenant-delete *ngSwitchCase = "tenant_delete"></app-tenant-delete>
+    <app-graphs *ngSwitchCase = "none"></app-graphs>
+    <hr>
+</div> -->
