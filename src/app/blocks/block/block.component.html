@@ -2,7 +2,7 @@
 <hr>
 
 <!-- TODO: remove below component and add dynamically -->
-<div  *ngIf = "cmpSelectionType === 'tenants_list'">
+<!-- <div  *ngIf = "cmpSelectionType === 'tenants_list'">
     <app-tenants-list></app-tenants-list>
 </div>
 
@@ -23,8 +23,8 @@
 </div>
 <div  *ngIf = "cmpSelectionType === 'none'">
         <app-graphs></app-graphs>
-</div>
-
+</div> -->
+    <router-outlet></router-outlet>
 <hr>
 <!-- <div  [ngSwitch] = "cmpSelectionType">
     <app-tenants-list *ngSwitchCase = "tenants_list"></app-tenants-list>
