@@ -1,5 +1,5 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- TODO: apply btn-group-justified to fill row with the buttons -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -16,9 +16,11 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning btn-space" (click) = "selectComponent('tenant_delete')" routerLink = "tenant_delete">Vecate Tenant</button>
                 </div>
-                <!-- TODO: create component for the below functionality -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info btn-space" (click) = "selectComponent('tenant_search')" routerLink = "tenant_search">Search Tenant</button>
+                <div class="box">
+                    <div class="container-2">
+                        <span class="icon"><i class="fa fa-search"></i></span>
+                        <input type="search" id="search" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeaved()" #searchElement placeholder="Search..." />
+                    </div>
                 </div>
             </div>
         </div>
