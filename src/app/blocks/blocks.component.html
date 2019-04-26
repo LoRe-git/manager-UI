@@ -1,11 +1,16 @@
 <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <app-block-navigation (blockClickEmitter)="onNavigate()"></app-block-navigation>
+                <!-- <app-block-navigation (blockClickEmitter)="onNavigate()"></app-block-navigation> -->
+                <app-block-navigation></app-block-navigation>
             </div>
             <div class="col-md-9">
-                <app-block *ngIf="!graphComponentFlag"></app-block>
-                <app-graphs *ngIf="graphComponentFlag"></app-graphs>
+                <!-- <app-block *ngIf="!graphComponentFlag"></app-block>
+                <app-graphs *ngIf="graphComponentFlag"></app-graphs> -->
+                <app-menu (displayFlagEmitter) = "onSelected($event)"></app-menu>
+                <hr>
+                <app-block></app-block>
+                <hr>
             </div>
         </div>
     </div>

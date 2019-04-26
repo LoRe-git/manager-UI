@@ -6,9 +6,19 @@ import { Component } from '@angular/core';
     styleUrls: ['./blocks.component.css']
 })
 export class BlocksComponent{
-    graphComponentFlag: boolean = true;
+    // graphComponentFlag: boolean = true;
 
-    onNavigate(){
-        this.graphComponentFlag = false;
+    // onNavigate(){
+    //     this.graphComponentFlag = false;
+    // }
+
+    cmpSelectionType: string = 'none';
+
+    constructor() { }
+    ngOnInit() {
+    }
+    onSelected(arg: string){
+        this.cmpSelectionType = arg;
+        console.log(arg);
     }
 }

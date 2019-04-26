@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit{
-    cmpSelectionType: string = 'none';
+    // cmpSelectionType: string = 'none';
 
     constructor() { }
     ngOnInit() {
     }
-    onSelected(arg: string){
-        this.cmpSelectionType = arg;
-        console.log(arg);
-    }
+    // onSelected(arg: string){
+    //     this.cmpSelectionType = arg;
+    //     console.log(arg);
+    // }
 
 }
