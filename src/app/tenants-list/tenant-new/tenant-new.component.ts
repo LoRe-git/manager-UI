@@ -38,7 +38,9 @@ export class TenantNewComponent implements OnInit {
 
   onSubmit(){
     // this.signUpForm.get.fullname;
+    const newTenant = this.signUpForm.value;
     console.log(this.signUpForm);
+    this.tenantService.addTenant(new Tenant(+newTenant.id, newTenant.fullname, newTenant.address, +newTenant.phone, newTenant.roomno, newTenant.govid, +newTenant.amount, newTenant.email, new Date('02-12-2019'), new Date('06-16-2019'), +newTenant.blockid));
     this.signUpForm.reset();
   }
 

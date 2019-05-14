@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +42,7 @@ import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-searc
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
+    // HttpModule,
     ReactiveFormsModule,
     FormsModule
   ],
