@@ -65,12 +65,17 @@
           formControlName="email">
       </div>
       <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input 
+        <label for="calendar">Date of Birth</label>
+        <!-- <input 
           type="text" 
           class="form-control"
           id="dob"
-          formControlName="dob">
+          formControlName="dob"> -->
+          <div
+            id="calendar"
+            formControlName="dob">
+          </div>
+
       </div>
       <div class="form-group">
         <label for="doj">Date of Join</label>
@@ -92,3 +97,11 @@
     </form>
   </div>
 </div>
+<script type="text/javascript">
+  $('#calendar').datepicker({
+    format: 'YYYY-MM-DD',
+    inline: true,
+    sideBySide: true,
+    todayHighlight: true
+  });
+</script>
