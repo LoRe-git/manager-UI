@@ -11,12 +11,12 @@ import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-searc
 
 const routes: Routes = [
   {path:'', component:GraphsComponent},
-  {path:':id', component:BlockComponent, children:[
-    {path:'tenants_list', component:TenantsListComponent},
-    {path:'tenant_new', component:TenantNewComponent},
-    {path:'tenant_update', component:TenantUpdateComponent},
-    {path:'tenant_delete', component:TenantDeleteComponent},
-    {path:'tenant_search', component:TenantSearchComponent},
+  {path:'tenants', component:BlockComponent, children:[
+    {path:'all', component:TenantsListComponent},
+    {path:'new', component:TenantNewComponent},
+    {path:'update', component:TenantUpdateComponent, data: {tenantID: 'any'}},
+    {path:'delete', component:TenantDeleteComponent},
+    {path:'search', component:TenantSearchComponent},
   ]},
   {path:'**', redirectTo: ''}
 ];

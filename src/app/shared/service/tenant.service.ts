@@ -2,7 +2,7 @@ import { EventEmitter } from '@angular/core';
 
 import { Tenant } from '../model/tenant.model';
 
-export class TenantService{
+export class TenantService {
     tenantChangedEvent = new EventEmitter<Tenant[]>();
 
     private allTenants: Tenant[] = [
@@ -21,15 +21,15 @@ export class TenantService{
         console.log(this.allTenants);
     }
     updateTenant(latestTenant: Tenant){
-        let updateItemIndex = this.getIndex(latestTenant);
+        const updateItemIndex = this.getIndex(latestTenant);
         this.allTenants[updateItemIndex] = latestTenant;
         this.tenantChangedEvent.emit(this.allTenants.slice());
         console.log(this.allTenants);
     }
-    
+
     deleteTenant(deletedTenant: Tenant){
-        let updateItemIndex = this.getIndex(deletedTenant);
-        console.log('deleting tenant index: '+updateItemIndex);
+        const updateItemIndex = this.getIndex(deletedTenant);
+        console.log('deleting tenant index: ' + updateItemIndex);
         this.allTenants.splice(updateItemIndex, 1);
         this.tenantChangedEvent.emit(this.allTenants.slice());
         console.log(this.allTenants);
@@ -38,4 +38,13 @@ export class TenantService{
     getIndex(updatedTenant: Tenant){
         return this.allTenants.findIndex(tempTenant => tempTenant.t_id === updatedTenant.t_id);
     }
+
+    getTenantWithId(tenantId: number): Tenant{
+        return this.allTenants.find(tmpTenant => tmpTenant.t_id == tenantId);
+    }
+
+    tenantFormToModel(tenantForm): Tenant {
+        return new Tenant(+tenantForm.id, tenantForm.fullname, tenantForm.address, +tenantForm.phone, tenantForm.roomno, tenantForm.govid, +tenantForm.amount, tenantForm.email, new Date(tenantForm.dob), new Date(tenantForm.doj), +tenantForm.blockid);
+    }
+
 }

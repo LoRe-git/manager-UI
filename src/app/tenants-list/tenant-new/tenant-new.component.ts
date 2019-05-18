@@ -13,7 +13,7 @@ export class TenantNewComponent implements OnInit {
   signUpForm: FormGroup;
 
   constructor(private fb: FormBuilder, private tenantService: TenantService) { 
-    //FormBuilder to gould form:another way to build form
+    // FormBuilder to gould form:another way to build form
   }
 
   ngOnInit() {
@@ -31,16 +31,17 @@ export class TenantNewComponent implements OnInit {
         'blockid': new FormControl('')
       });
 
-    this.signUpForm.patchValue({
-      fullname:'Loki'
-    });
+      this.signUpForm.patchValue({
+        fullname: 'Loki'
+      });
   }
 
   onSubmit(){
     // this.signUpForm.get.fullname;
     const newTenant = this.signUpForm.value;
     console.log(this.signUpForm);
-    this.tenantService.addTenant(new Tenant(+newTenant.id, newTenant.fullname, newTenant.address, +newTenant.phone, newTenant.roomno, newTenant.govid, +newTenant.amount, newTenant.email, new Date('02-12-2019'), new Date('06-16-2019'), +newTenant.blockid));
+    // this.tenantService.addTenant(new Tenant(+newTenant.id, newTenant.fullname, newTenant.address, +newTenant.phone, newTenant.roomno, newTenant.govid, +newTenant.amount, newTenant.email, new Date('02/12/2019'), new Date('06/16/2019'), +newTenant.blockid));
+    this.tenantService.addTenant(this.tenantService.tenantFormToModel(newTenant));
     this.signUpForm.reset();
   }
 
