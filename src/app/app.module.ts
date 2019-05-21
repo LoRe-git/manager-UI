@@ -20,6 +20,7 @@ import { TenantDeleteComponent } from './tenants-list/tenant-delete/tenant-delet
 import { TenantNewComponent } from './tenants-list/tenant-new/tenant-new.component';
 import { TenantService } from './shared/service/tenant.service';
 import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-search.component';
+import { CustomFilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-searc
     TenantUpdateComponent,
     TenantDeleteComponent,
     TenantNewComponent,
-    TenantSearchComponent
+    TenantSearchComponent,
+    CustomFilterPipe
 
   ],
   imports: [

@@ -1,4 +1,12 @@
 <div class="row">
+    <label for="search">Search:</label>
+    <input class="form-control" 
+        type="text" 
+        id="search" 
+        [(ngModel)]="searchTxt" 
+        placeholder="Please enter to search by name" 
+        autocomplete="off">
+    <br><br>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -18,7 +26,7 @@
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.block_id}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId"> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
                 </tr> -->
-                <tr *ngFor = "let tenant of tenants">
+                <tr *ngFor = "let tenant of tenants | filter : searchTxt">
                         <td>{{tenant.t_name}}</td>
                         <td>{{tenant.t_address}}</td>
                         <td>{{tenant.t_phone}}</td>
