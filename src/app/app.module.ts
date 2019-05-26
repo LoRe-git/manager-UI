@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { TenantNewComponent } from './tenants-list/tenant-new/tenant-new.compone
 import { TenantService } from './shared/service/tenant.service';
 import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-search.component';
 import { CustomFilterPipe } from './shared/filter.pipe';
+import { HttpService } from './shared/service/http.service';
 
 @NgModule({
   declarations: [
@@ -44,11 +45,11 @@ import { CustomFilterPipe } from './shared/filter.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [BlockSelectionService, TenantService],
+  providers: [BlockSelectionService, TenantService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

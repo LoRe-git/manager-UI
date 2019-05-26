@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 
 import { Tenant } from '../model/tenant.model';
+import { Tenant2 } from '../model/tenant2.model';
 
 export class TenantService {
     tenantChangedEvent = new EventEmitter<Tenant[]>();
@@ -45,6 +46,10 @@ export class TenantService {
 
     tenantFormToModel(tenantForm): Tenant {
         return new Tenant(+tenantForm.id, tenantForm.fullname, tenantForm.address, +tenantForm.phone, tenantForm.roomno, tenantForm.govid, +tenantForm.amount, tenantForm.email, new Date(tenantForm.dob), new Date(tenantForm.doj), +tenantForm.blockid);
+    }
+
+    tenant2FormToModel(tenantForm): Tenant2 {
+        return new Tenant2(+tenantForm.id, tenantForm.phone, tenantForm.fullname, tenantForm.govid, new Date(tenantForm.doj), tenantForm.address, tenantForm.roomno, +tenantForm.amount, tenantForm.email, tenantForm.blockid);
     }
 
 }

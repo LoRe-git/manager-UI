@@ -2,6 +2,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { TenantService } from 'src/app/shared/service/tenant.service';
 import { Tenant } from 'src/app/shared/model/tenant.model';
+import { HttpService } from 'src/app/shared/service/http.service';
 
 @Component({
   selector: 'app-tenant-new',
@@ -12,7 +13,7 @@ export class TenantNewComponent implements OnInit {
 
   signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private tenantService: TenantService) { 
+  constructor(private httpService: HttpService, private tenantService: TenantService) { 
     // FormBuilder to gould form:another way to build form
   }
 
@@ -43,6 +44,16 @@ export class TenantNewComponent implements OnInit {
     // this.tenantService.addTenant(new Tenant(+newTenant.id, newTenant.fullname, newTenant.address, +newTenant.phone, newTenant.roomno, newTenant.govid, +newTenant.amount, newTenant.email, new Date('02/12/2019'), new Date('06/16/2019'), +newTenant.blockid));
     this.tenantService.addTenant(this.tenantService.tenantFormToModel(newTenant));
     this.signUpForm.reset();
+    
+    // Save to Database
+    this.httpService.saveTenant(this.tenantService.tenant2FormToModel(newTenant)).subscribe(
+      (response) => {
+        console.log(response.toString());
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }
