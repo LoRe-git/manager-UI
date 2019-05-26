@@ -26,13 +26,13 @@
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.block_id}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId"> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
                 </tr> -->
-                <tr *ngFor = "let tenant of tenants | filter : searchTxt">
-                        <td>{{tenant.t_name}}</td>
-                        <td>{{tenant.t_address}}</td>
-                        <td>{{tenant.t_phone}}</td>
-                        <td>{{tenant.block_id}}</td>
+                <tr *ngFor = "let tenant of tenants2 | async | filter : searchTxt ">
+                        <td>{{tenant.name}}</td>
+                        <td>{{tenant.address}}</td>
+                        <td>{{tenant.mobile}}</td>
+                        <td>{{tenant.bId}}</td>
                         <td> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
-                        <td> <button class="btn btn-danger" (click) = "onEdit(tenant.t_id)">Edit</button></td>
+                        <td> <button class="btn btn-danger" (click) = "onEdit(tenant.id)">Edit</button></td>
                     </tr>
         </tbody>
     </table>

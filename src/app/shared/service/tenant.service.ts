@@ -1,10 +1,15 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Tenant } from '../model/tenant.model';
 import { Tenant2 } from '../model/tenant2.model';
+import { HttpService } from './http.service';
+import { reject } from 'q';
 
+@Injectable()
 export class TenantService {
     tenantChangedEvent = new EventEmitter<Tenant[]>();
+    
+    constructor(private httpService: HttpService) {}
 
     private allTenants: Tenant[] = [
         new Tenant(1, 'Name1', 'Hyd', 9876543321, 'RM1', 'AADHAR12345', 2000, 'loki@gmail.com', new Date("1993-05-10"), new Date("2018-12-01"), 1),
@@ -12,8 +17,19 @@ export class TenantService {
         new Tenant(3, 'Name3', 'Bnglr', 9876543321, 'RM3', 'AADHAR34567', 2000, 'posam@gmail.com', new Date("1995-02-20"), new Date("2018-05-20"), 1)
     ];
 
+    allTenants2: Tenant2[];
+
     getAllTenants(){
-        return this.allTenants.slice();
+        // return this.allTenants.slice();
+        return this.httpService.getTenants();
+        // .subscribe(
+
+        //      (response: Tenant2[]) => {
+        //          this.allTenants2 = response;
+        //          console.log('response: ', response);
+        //      });
+        //    console.log('Test allTenants2: ', this.allTenants2);
+        // return this.allTenants2;
     }
 
     addTenant(newTenant: Tenant){
