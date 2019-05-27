@@ -31,9 +31,9 @@ export class TenantsListComponent implements OnInit{
       //     this.tenants2 = latestTenants;
       //   }
       // );
-      this.tenants2 = this.tenantService.getAllTenants().pipe(
-        
-      );
+      this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
+        this.tenants2 = responseData;
+      });
   }
 
   onDelete(deletedTenant: Tenant){

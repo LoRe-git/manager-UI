@@ -3,7 +3,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Tenant } from '../model/tenant.model';
 import { Tenant2 } from '../model/tenant2.model';
 import { HttpService } from './http.service';
-import { reject } from 'q';
 
 @Injectable()
 export class TenantService {
@@ -21,15 +20,14 @@ export class TenantService {
 
     getAllTenants(){
         // return this.allTenants.slice();
-        return this.httpService.getTenants();
-        // .subscribe(
-
+        // this.httpService.getTenants().subscribe(
         //      (response: Tenant2[]) => {
         //          this.allTenants2 = response;
         //          console.log('response: ', response);
         //      });
-        //    console.log('Test allTenants2: ', this.allTenants2);
+        // console.log('Test allTenants2: ', this.allTenants2);
         // return this.allTenants2;
+        return this.httpService.getTenants();
     }
 
     addTenant(newTenant: Tenant){

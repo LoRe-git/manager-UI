@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpService {
+    dbTenants: Tenant2[];
+
     constructor(private httpClient: HttpClient) {}
     apiURL: string = 'http://localhost:8080/api/v1/tenants/';
     saveTenant(newTenant: Tenant2){
@@ -12,7 +14,6 @@ export class HttpService {
     }
 
     getTenants() {
-        return this.httpClient.get(this.apiURL); 
-        
+        return this.httpClient.get<Tenant2[]>(this.apiURL);
     }
 }

@@ -26,7 +26,7 @@
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.block_id}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId"> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
                 </tr> -->
-                <tr *ngFor = "let tenant of tenants2 | async | filter : searchTxt ">
+                <tr *ngFor = "let tenant of tenants2 | filter : searchTxt ">
                         <td>{{tenant.name}}</td>
                         <td>{{tenant.address}}</td>
                         <td>{{tenant.mobile}}</td>
