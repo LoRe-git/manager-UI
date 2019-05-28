@@ -22,6 +22,7 @@ import { TenantService } from './shared/service/tenant.service';
 import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-search.component';
 import { CustomFilterPipe } from './shared/filter.pipe';
 import { HttpService } from './shared/service/http.service';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HttpService } from './shared/service/http.service';
     TenantDeleteComponent,
     TenantNewComponent,
     TenantSearchComponent,
-    CustomFilterPipe
+    CustomFilterPipe,
+    SpinnerComponent
 
   ],
   imports: [

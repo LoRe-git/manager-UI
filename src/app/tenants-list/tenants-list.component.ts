@@ -14,6 +14,7 @@ export class TenantsListComponent implements OnInit{
   selectedBlockId: number;
   tenants: Tenant[];
   tenants2: Tenant2[];
+  showSpinner: boolean = true;
 
   constructor(
     private blockSelectionService: BlockSelectionService,
@@ -33,6 +34,7 @@ export class TenantsListComponent implements OnInit{
       // );
       this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
         this.tenants2 = responseData;
+        this.showSpinner = false;
       });
   }
 

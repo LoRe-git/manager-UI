@@ -7,7 +7,9 @@
         placeholder="Please enter to search by name" 
         autocomplete="off">
     <br><br>
-    <table class="table table-hover">
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+
+    <table class="table table-hover" *ngIf="!showSpinner">
         <thead>
             <tr>
                 <th>Name</th>
