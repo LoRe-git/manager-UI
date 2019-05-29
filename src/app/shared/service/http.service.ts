@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tenant2 } from '../model/tenant2.model';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpService {
@@ -15,5 +14,31 @@ export class HttpService {
 
     getTenants() {
         return this.httpClient.get<Tenant2[]>(this.apiURL);
+    }
+
+    deleteTenant(tenantID: number){
+        // this.httpClient.delete(this.apiURL+tenantID);
+        const fullURL = this.apiURL+tenantID;
+        console.log(fullURL);
+
+        this.httpClient.request('DELETE', fullURL).subscribe(
+            respose => {
+                console.log(respose.toString);
+            },
+            error => {
+                console.log(error.toString);
+            }
+        );
+    }   
+
+    updateTenant(updatedTenant: Tenant2){
+        this.httpClient.put(this.apiURL, updatedTenant).subscribe(
+            respose => {
+                console.log(respose.toString);
+            },
+            error => {
+                console.log(error.toString);
+            }
+        );
     }
 }

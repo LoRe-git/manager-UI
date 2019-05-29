@@ -32,14 +32,21 @@ export class TenantsListComponent implements OnInit{
       //     this.tenants2 = latestTenants;
       //   }
       // );
-      this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
-        this.tenants2 = responseData;
-        this.showSpinner = false;
-      });
+
+      // fetching tenants data
+      this.fetchTenantsData();
   }
 
-  onDelete(deletedTenant: Tenant){
-    this.tenantService.deleteTenant(deletedTenant);
+  onDelete(deletedTenant: Tenant2){
+    // this.tenantService.deleteTenant(deletedTenant);
+    console.log(deletedTenant);
+
+    this.showSpinner = true;
+
+    this.tenantService.deleteTenant(deletedTenant.id);
+
+    // refreshing tenants data
+    this.fetchTenantsData();
   }
 
   onEdit(id: string) {
@@ -47,5 +54,16 @@ export class TenantsListComponent implements OnInit{
       state : { tenantId: id }
     };
     this.router.navigate(['tenants/update'], navigationExtras);
+  }
+
+  fetchTenantsData(){
+    this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
+      this.tenants2 = responseData;
+
+      //assigning tenants to allTenants2 of service for Edit tenant purpose
+      this.tenantService.allTenants2 = responseData; 
+      
+      this.showSpinner = false;
+    });
   }
 }

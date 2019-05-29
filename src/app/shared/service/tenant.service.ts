@@ -35,27 +35,41 @@ export class TenantService {
         this.tenantChangedEvent.emit(this.allTenants.slice());
         console.log(this.allTenants);
     }
-    updateTenant(latestTenant: Tenant){
-        const updateItemIndex = this.getIndex(latestTenant);
-        this.allTenants[updateItemIndex] = latestTenant;
-        this.tenantChangedEvent.emit(this.allTenants.slice());
-        console.log(this.allTenants);
+    
+    
+    // updateTenant(latestTenant: Tenant){
+    //     const updateItemIndex = this.getIndex(latestTenant);
+    //     this.allTenants[updateItemIndex] = latestTenant;
+    //     this.tenantChangedEvent.emit(this.allTenants.slice());
+    //     console.log(this.allTenants);
+    // }
+
+    updateTenant(latestTenant: Tenant2){
+        this.httpService.updateTenant(latestTenant);
+        console.log(this.allTenants2);
     }
 
-    deleteTenant(deletedTenant: Tenant){
-        const updateItemIndex = this.getIndex(deletedTenant);
-        console.log('deleting tenant index: ' + updateItemIndex);
-        this.allTenants.splice(updateItemIndex, 1);
-        this.tenantChangedEvent.emit(this.allTenants.slice());
-        console.log(this.allTenants);
+
+    deleteTenant(tenantID: number){ //TODO: make param as Tenant object for array tenants
+        // const updateItemIndex = this.getIndex(deletedTenant);
+        // console.log('deleting tenant index: ' + updateItemIndex);
+        // this.allTenants.splice(updateItemIndex, 1);
+        // this.tenantChangedEvent.emit(this.allTenants.slice());
+        // console.log(this.allTenants);
+
+        this.httpService.deleteTenant(tenantID);
     }
 
     getIndex(updatedTenant: Tenant){
         return this.allTenants.findIndex(tempTenant => tempTenant.t_id === updatedTenant.t_id);
     }
 
-    getTenantWithId(tenantId: number): Tenant{
-        return this.allTenants.find(tmpTenant => tmpTenant.t_id == tenantId);
+    // getTenantWithId(tenantId: number): Tenant{
+    //     return this.allTenants.find(tmpTenant => tmpTenant.t_id == tenantId);
+    // }
+
+    getTenantWithId(tenantId: number): Tenant2{
+        return this.allTenants2.find(tmpTenant => tmpTenant.id == tenantId);
     }
 
     tenantFormToModel(tenantForm): Tenant {

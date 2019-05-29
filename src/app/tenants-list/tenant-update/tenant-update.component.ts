@@ -4,6 +4,7 @@ import { TenantService } from '../../shared/service/tenant.service';
 import { Router } from '@angular/router';
 
 import { Tenant } from '../../shared/model/tenant.model';
+import { Tenant2 } from 'src/app/shared/model/tenant2.model';
 
 @Component({
   selector: 'app-tenant-update',
@@ -13,14 +14,22 @@ import { Tenant } from '../../shared/model/tenant.model';
 export class TenantUpdateComponent implements OnInit {
 
   signUpForm: FormGroup;
-  private tenantID: string;
-  private updateTenant: Tenant;
+  // private tenantID: string;
+  private tenantID: number;
+  // private updateTenant: Tenant;
+  private updateTenant: Tenant2;
 
   constructor(private tenantService: TenantService, private router: Router) {
     // FormBuilder to gould form:another way to build form
-    this.tenantID = this.router.getCurrentNavigation().extras.state.tenantId;
+
+    // For array model tenants
+    // this.tenantID = this.router.getCurrentNavigation().extras.state.tenantId;
+    // this.updateTenant = this.tenantService.getTenantWithId(+this.tenantID);
+    // console.log('Tenant need to update: ' + this.updateTenant);
+
+    this.tenantID = +this.router.getCurrentNavigation().extras.state.tenantId;
     this.updateTenant = this.tenantService.getTenantWithId(+this.tenantID);
-    console.log('Tenant nedd to update: ' + this.updateTenant);
+    console.log('Tenant need to update: ' + this.updateTenant);
   }
 
   ngOnInit() {
@@ -39,24 +48,33 @@ export class TenantUpdateComponent implements OnInit {
       });
 
       this.signUpForm.patchValue({
-        fullname: this.updateTenant.t_name,
-        id: this.updateTenant.t_id,
-        address: this.updateTenant.t_address,
-        phone: this.updateTenant.t_phone,
-        roomno: this.updateTenant.t_roomno,
-        govid: this.updateTenant.t_govId,
-        amount: this.updateTenant.t_amount,
-        email: this.updateTenant.t_email,
-        dob: this.updateTenant.t_dob,
-        doj: this.updateTenant.t_doj,
-        blockid: this.updateTenant.block_id
+        fullname: this.updateTenant.name,
+        id: this.updateTenant.id,
+        address: this.updateTenant.address,
+        phone: this.updateTenant.mobile,
+        roomno: this.updateTenant.room,
+        govid: this.updateTenant.gov_id,
+        amount: this.updateTenant.amount,
+        email: this.updateTenant.email,
+        // dob: this.updateTenant.dob,
+        doj: this.updateTenant.doj,
+        blockid: this.updateTenant.bId
       });
   }
 
+  // onSubmit() {
+  //   console.log(this.signUpForm);
+  //   this.tenantService.updateTenant(this.tenantService.tenantFormToModel(this.signUpForm.value));
+  //   console.log('Tenant updated...');
+  //   this.signUpForm.reset();
+  // }
+
+
   onSubmit() {
     console.log(this.signUpForm);
-    this.tenantService.updateTenant(this.tenantService.tenantFormToModel(this.signUpForm.value));
+    this.tenantService.updateTenant(this.tenantService.tenant2FormToModel(this.signUpForm.value));
     console.log('Tenant updated...');
     this.signUpForm.reset();
   }
+
 }
