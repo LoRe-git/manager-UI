@@ -18,6 +18,7 @@ export class TenantUpdateComponent implements OnInit {
   private tenantID: number;
   // private updateTenant: Tenant;
   private updateTenant: Tenant2;
+  enableUpdateBtn = true;
 
   constructor(private tenantService: TenantService, private router: Router) {
     // FormBuilder to gould form:another way to build form
@@ -26,7 +27,6 @@ export class TenantUpdateComponent implements OnInit {
     // this.tenantID = this.router.getCurrentNavigation().extras.state.tenantId;
     // this.updateTenant = this.tenantService.getTenantWithId(+this.tenantID);
     // console.log('Tenant need to update: ' + this.updateTenant);
-
     this.tenantID = +this.router.getCurrentNavigation().extras.state.tenantId;
     this.updateTenant = this.tenantService.getTenantWithId(+this.tenantID);
     console.log('Tenant need to update: ' + this.updateTenant);

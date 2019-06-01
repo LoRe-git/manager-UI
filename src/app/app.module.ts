@@ -23,6 +23,7 @@ import { TenantSearchComponent } from './tenants-list/tenant-search/tenant-searc
 import { CustomFilterPipe } from './shared/filter.pipe';
 import { HttpService } from './shared/service/http.service';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [BlockSelectionService, TenantService, HttpService],
+  providers: [BlockSelectionService, TenantService, HttpService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

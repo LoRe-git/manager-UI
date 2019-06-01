@@ -7,11 +7,14 @@
           type="text"
           formControlName="fullname"
           class="form-control">
+          <span 
+            *ngIf="!signUpForm.get('fullname').valid && signUpForm.get('fullname').touched"
+            class="help-block">Please enter Name!</span>
       </div>
       <div class="form-group">
-        <label for="id">Id:</label>
+        <!-- <label for="id">Id:</label> -->
         <input 
-          type="text"
+          type="hidden"
           class="form-control"
           id="id"
           formControlName="id">
@@ -23,6 +26,13 @@
           class="form-control"
           id="address"
           formControlName="address">
+          <span 
+          class="help-block">
+          <span
+          *ngIf="!signUpForm.get('address').valid && signUpForm.get('address').touched"
+          class="help-block">Please enter Address!</span>
+
+        </span>
       </div>
       <div class="form-group">
         <label for="phone">Phone Number:</label>
@@ -31,6 +41,12 @@
           class="form-control"
           id="phone"
           formControlName="phone">
+          <span 
+          class="help-block">
+          <span
+          *ngIf="!signUpForm.get('phone').valid && signUpForm.get('phone').touched"
+          class="help-block">Please enter Phone!</span>
+        </span>
       </div>      
       <div class="form-group">
         <label for="roomno">Room Number:</label>
@@ -55,6 +71,9 @@
           class="form-control"
           id="amount"
           formControlName="amount">
+          <span 
+          *ngIf="!signUpForm.get('amount').valid && signUpForm.get('amount').touched"
+          class="help-block">Please enter only digits!</span>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
@@ -63,6 +82,9 @@
           class="form-control"
           id="email"
           formControlName="email">
+          <span 
+          *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched"
+          class="help-block">Please enter valid Email!</span>
       </div>
       <div class="form-group">
         <label for="datepicker">Date of Birth</label>
@@ -71,6 +93,9 @@
           class="form-control"
           id="dob"
           formControlName="dob">
+          <span 
+          *ngIf="!signUpForm.get('dob').valid && signUpForm.get('dob').touched"
+          class="help-block">Please enter Date of Birth!</span>
       </div>
       <div class="form-group">
         <label for="doj">Date of Join</label>
@@ -87,8 +112,17 @@
           class="form-control"
           id="blockid"
           formControlName="blockid">
+          <span 
+      *ngIf="!signUpForm.get('blockid').valid && signUpForm.get('blockid').touched"
+      class="help-block">Please enter block ID!</span>
       </div>
-      <button class="btn btn-primary" type="submit">Register</button>
+      <button [disabled]="!signUpForm.valid" class="btn btn-primary" type="submit" *ngIf="!enableUpdateBtn">Register</button>
+      <button [disabled]="!signUpForm.valid" class="btn btn-primary" type="submit" *ngIf="enableUpdateBtn">Update</button>
+      &nbsp;&nbsp;&nbsp;<button class="btn btn-warning" type="reset">Reset</button>
+      <br><br>
+      <span 
+      *ngIf="signUpForm.invalid && signUpForm.touched"
+      class="help-block">Please enter valid data!</span>
     </form>
   </div>
 </div>
