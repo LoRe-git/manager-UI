@@ -3,6 +3,11 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { TenantService } from 'src/app/shared/service/tenant.service';
 import { Tenant } from 'src/app/shared/model/tenant.model';
 import { HttpService } from 'src/app/shared/service/http.service';
+import { BlockSelectionService } from 'src/app/shared/service/blockselection.service';
+import { Branch } from 'src/app/shared/model/branch.model';
+import { Observable } from 'rxjs';
+import { Room } from 'src/app/shared/model/room.model';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tenant-new',
@@ -13,11 +18,26 @@ export class TenantNewComponent implements OnInit {
 
   signUpForm: FormGroup;
   enableUpdateBtn = false;
-  constructor(private httpService: HttpService, private tenantService: TenantService) { 
+  branches: Branch[];
+  rooms: Room[];
+  selectedBranch: string;
+
+  constructor(private httpService: HttpService, private tenantService: TenantService, private blockSelectionService: BlockSelectionService) { 
     // FormBuilder to gould form:another way to build form
   }
 
   ngOnInit() {
+
+    this.httpService.getBranches('pmh').subscribe((resposeData: Branch[]) => {
+      console.log(resposeData);
+      this.branches = resposeData;
+      this.blockSelectionService.branches = this.branches;
+      // this.showSpinner = false;
+  },
+  error => {
+      console.log(error);
+  });
+
       this.signUpForm = new FormGroup({
         'fullname': new FormControl(null, [Validators.required]),
         'id': new FormControl(''),
@@ -56,6 +76,36 @@ export class TenantNewComponent implements OnInit {
 
       this.signUpForm.reset();
     }
+  }
+
+  changeBranch(args){ 
+    const branchID = args.target.value;
+    console.log('branch: ', branchID);
+    this.signUpForm.patchValue({
+      blockid: branchID
+    });
+    this.getRooms(branchID);
+
+  }
+
+  getRooms(branchId: string){
+    console.log('room(): ',branchId);
+    this.httpService.getRoomsByBid(branchId).subscribe(
+      (responseData: Room[]) => {
+        console.log(responseData);
+        this.rooms = responseData;
+    },
+    error => {
+        console.log(error);
+    }
+    );
+  }
+
+  selectRoom(e){
+    const roomID =  (<HTMLSelectElement>e.target).value;
+    this.signUpForm.patchValue({
+      roomno: roomID
+    });
   }
 
   // isOnlyAlphabets(val:any):{[key:string]:boolean} | null{

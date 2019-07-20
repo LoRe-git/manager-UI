@@ -48,14 +48,7 @@
           class="help-block">Please enter Phone!</span>
         </span>
       </div>      
-      <div class="form-group">
-        <label for="roomno">Room Number:</label>
-        <input 
-          type="text" 
-          class="form-control"
-          id="roomno"
-          formControlName="roomno">
-      </div>
+      
       <div class="form-group">
         <label for="govid">Government Id:</label>
         <input 
@@ -107,15 +100,32 @@
       </div>
       <div class="form-group">
         <label for="blockid">Block Id:</label>
-        <input 
+        <select class = "form-control" name="branch-selection" id="blockid" #b (change)= "changeBranch($event)" formControlName="blockid">
+          <option value="" disabled>Select branch</option>
+          <option *ngFor = "let branch of branches" [value]="branch.bid">{{branch.bname}}</option>
+        </select>
+        <!-- <input 
           type="text" 
           class="form-control"
           id="blockid"
-          formControlName="blockid">
+          formControlName="blockid"> -->
           <span 
       *ngIf="!signUpForm.get('blockid').valid && signUpForm.get('blockid').touched"
-      class="help-block">Please enter block ID!</span>
+      class="help-block">Please select branch!</span>
       </div>
+      <div class="form-group">
+        <label for="roomno">Room Number:</label>
+        <select class = "form-control" name="room-selection" id="roomno" (change)= "selectRoom($event)" formControlName="roomno">
+          <option value="" disabled>Select room</option>
+          <option *ngFor = "let room of rooms" [ngValue]="room.roomId">{{room.roomNo}}</option>
+        </select>
+        <!-- <input 
+          type="text" 
+          class="form-control"
+          id="roomno"
+          formControlName="roomno"> -->
+      </div>
+
       <button [disabled]="!signUpForm.valid" class="btn btn-primary" type="submit" *ngIf="!enableUpdateBtn">Register</button>
       <button [disabled]="!signUpForm.valid" class="btn btn-primary" type="submit" *ngIf="enableUpdateBtn">Update</button>
       &nbsp;&nbsp;&nbsp;<button class="btn btn-warning" type="reset">Reset</button>

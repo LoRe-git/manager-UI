@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Branch } from '../shared/model/branch.model';
+import { BlockSelectionService } from '../shared/service/blockselection.service';
 
 @Component({
     selector: 'app-blocks',
@@ -11,10 +13,11 @@ export class BlocksComponent{
     // onNavigate(){
     //     this.graphComponentFlag = false;
     // }
-
+    branches: Branch[];
     cmpSelectionType: string = 'none';
 
-    constructor() { }
+    constructor(private blockSelectionService: BlockSelectionService) {
+     }
     ngOnInit() {
     }
     onSelected(arg: string){

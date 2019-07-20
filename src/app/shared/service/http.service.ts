@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tenant2 } from '../model/tenant2.model';
+import { Branch } from '../model/branch.model';
+import { Room } from '../model/room.model';
 
 @Injectable()
 export class HttpService {
     dbTenants: Tenant2[];
 
     constructor(private httpClient: HttpClient) {}
-    apiURL: string = 'http://localhost:8080/api/v1/tenants/';
+    apiURL: string = 'http://localhost:8080/api/v1/tenants';
     saveTenant(newTenant: Tenant2){
        return this.httpClient.post(this.apiURL,newTenant);
     }
@@ -40,5 +42,18 @@ export class HttpService {
                 console.log(error.toString);
             }
         );
+    }
+
+    getBranches(hid: string){
+        return this.httpClient.get<Branch[]>(this.apiURL+'/hostels/'+hid);
+    }
+
+    searchTenants(searchString: string){
+        return this.httpClient.get<Tenant2[]>(this.apiURL+'/search/pmh/'+searchString);
+    }
+
+    getRoomsByBid(branchId: String){
+        console.log(this.apiURL+'/rooms/'+ branchId);
+        return this.httpClient.get<Room[]>(this.apiURL+'/rooms/'+ branchId);
     }
 }

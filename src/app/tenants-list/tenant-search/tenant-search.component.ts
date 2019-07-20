@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/shared/service/http.service';
+import { Tenant2 } from 'src/app/shared/model/tenant2.model';
 
 @Component({
   selector: 'app-tenant-search',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TenantSearchComponent implements OnInit {
 
-  constructor() { }
+  searchTxt: string;
+  tenants: Tenant2[];
+  showSpinner:boolean = true;
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
   }
 
+  getTenantResults(ev:any){
+    console.log(this.searchTxt);
+    this.httpService.searchTenants(this.searchTxt).subscribe(
+      (response: Tenant2[]) => {
+        this.tenants = response;
+        this.showSpinner = false;
+      }
+    );
+  }
+
+  onDelete(tenant: Tenant2){
+
+  }
+
+  onEdit(id: number){
+
+  }
 }

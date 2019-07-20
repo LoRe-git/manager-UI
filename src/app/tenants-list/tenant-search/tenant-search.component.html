@@ -1,0 +1,51 @@
+<div class="row">
+    <input [(ngModel)]="searchTxt" type="text" name="seach" id="search"><button class = "btn btn-primary" onclick="getTenantResults(event)">Search</button>
+</div>
+
+
+<div class="row">
+        <app-spinner *ngIf="showSpinner"></app-spinner>
+        <div *ngIf="!showSpinner">
+            <label for="search">Search:</label>
+            <input class="form-control" 
+                type="text" 
+                id="search" 
+                [(ngModel)]="searchTxt" 
+                placeholder="Please enter to search by name" 
+                autocomplete="off">
+            <br><br>
+        
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Block ID</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <ng-content class="table table-striped table-hover"></ng-content> -->
+                    <!-- TODO: Add code to switch tables based on block click -->
+                    <!-- <tr *ngFor = "let tenant of tenants">
+                            <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_name}}</td>
+                            <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_address}}</td>
+                            <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_phone}}</td>
+                            <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.block_id}}</td>
+                            <td *ngIf = "tenant.block_id === selectedBlockId"> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
+                        </tr> -->
+                        <tr *ngFor = "let tenant of tenants">
+                                <td>{{tenant.name}}</td>
+                                <td>{{tenant.address}}</td>
+                                <td>{{tenant.mobile}}</td>
+                                <td>{{tenant.bId}}</td>
+                                <td> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
+                                <td> <button class="btn btn-danger" (click) = "onEdit(tenant.id)">Edit</button></td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+
+</div>
