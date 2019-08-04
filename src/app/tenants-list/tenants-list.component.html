@@ -1,15 +1,89 @@
 <div class="row">
-<app-spinner *ngIf="showSpinner"></app-spinner>
-<div *ngIf="!showSpinner">
-    <label for="search">Search:</label>
-    <input class="form-control" 
-        type="text" 
-        id="search" 
-        [(ngModel)]="searchTxt" 
-        placeholder="Please enter to search by name" 
-        autocomplete="off">
-    <br><br>
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+    <div *ngIf="!showSpinner">
+        <label for="search">Search:</label>
+        <input class="form-control" type="text" id="search" [(ngModel)]="searchTxt"
+            placeholder="Please enter to search by name" autocomplete="off">
+        <br><br>
 
+
+        <div class="css-table">
+            <div class="css-table-header-group">
+                <div class="css-table-cell">#</div>
+                <div class="css-table-cell">Name</div>
+                <div class="css-table-cell">City</div>
+                <div class="css-table-cell">Mobile</div>
+                <div class="css-table-cell">Branch</div>
+                <div class="css-table-cell"></div>
+                <div class="css-table-cell"></div>
+            </div>
+        </div>
+
+        <div *ngFor="let tenant of tenants2 | filter : searchTxt; let index = index ">
+            <div class="css-table">
+                <div class="css-table-body">
+                    <div class="css-table-row" (click)="rowControls[index].isCollapse = !rowControls[index].isCollapse"
+                        [attr.aria-controls]="'collapse_'+index">
+                        <div class="css-table-cell">{{index}}</div>
+                        <div class="css-table-cell">{{tenant.name}}</div>
+                        <div class="css-table-cell">{{tenant.address}}</div>
+                        <div class="css-table-cell">{{tenant.mobile}}</div>
+                        <div class="css-table-cell">{{tenant.bId}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="css-table">
+                <div class="css-table-body">
+                    <div id="collapse_{{index}}" [ngbCollapse]="rowControls[index].isCollapse">
+                        <!--class="collapse in" -->
+                        <div class="css-table-row">
+                            <div class="card card-inverse" style="background-color: rgb(216, 214, 214); border-color: rgb(143, 142, 142);">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8">
+                                            <h2 class="card-title">Name: {{tenant.name}}</h2>
+                                            <p class="card-text"><strong>Address: </strong> {{tenant.address}} </p>
+                                            <p class="card-text"><strong>Email: </strong> {{tenant.email}} </p>
+                                            <p class="card-text"><strong>Gov ID: </strong> {{tenant.gov_id}} </p>
+                                            <p class="card-text"><strong>Date of Join: </strong> {{tenant.doj}} </p>
+                                            <p class="card-text"><strong>Room Number: </strong> {{tenant.room}} </p>
+                                            <p class="card-text"><strong>Branch ID: </strong> {{tenant.bId}} </p>
+                                            <p class="card-text"><strong>Amount Paid: </strong> {{tenant.amount}} </p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 text-center">
+                                            <img class="btn-md" src="assets/images/defaultprofilepic.jpeg" alt="Tenant Picture goes here"
+                                                style="border-radius:40%;">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 text-center">
+                                            <h2><strong> 5.2K </strong></h2>
+                                            <p><small>Fans</small></p>
+                                            <button class="btn btn-primary btn-block btn-md"><span
+                                                    class="fa fa-facebook-square"></span> Like </button>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 text-center">
+                                            <h2><strong>1.4K</strong></h2>
+                                            <p><small>Following</small></p>
+                                            <button class="btn btn-success btn-block btn-md"><span
+                                                    class="fa fa-twitter-square"></span> Tweet </button>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 text-center">
+                                            <h2><strong>3.8K</strong></h2>
+                                            <p><small>Followers</small></p>
+                                            <button type="button" class="btn btn-danger btn-block btn-md"><span
+                                                    class="fa fa-google-plus-square"></span> Follow </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 
     <table class="table table-hover">
         <thead>
             <tr>
@@ -21,25 +95,26 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            <!-- <ng-content class="table table-striped table-hover"></ng-content> -->
-            <!-- TODO: Add code to switch tables based on block click -->
-            <!-- <tr *ngFor = "let tenant of tenants">
+        <tbody> -->
+    <!-- <ng-content class="table table-striped table-hover"></ng-content> -->
+    <!-- TODO: Add code to switch tables based on block click -->
+    <!-- <tr *ngFor = "let tenant of tenants">
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_name}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_address}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.t_phone}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId">{{tenant.block_id}}</td>
                     <td *ngIf = "tenant.block_id === selectedBlockId"> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
                 </tr> -->
-                <tr *ngFor = "let tenant of tenants2 | filter : searchTxt ">
+    <!-- THIS IS WORKING CODE TO DISPLAY ALL TEANTS 
+                    <tr *ngFor = "let tenant of tenants2 | filter : searchTxt ">
                         <td>{{tenant.name}}</td>
                         <td>{{tenant.address}}</td>
                         <td>{{tenant.mobile}}</td>
                         <td>{{tenant.bId}}</td>
                         <td> <button class="btn btn-danger" (click) = "onDelete(tenant)">Delete</button></td>
                         <td> <button class="btn btn-danger" (click) = "onEdit(tenant.id)">Edit</button></td>
-                    </tr>
-        </tbody>
-    </table>
-</div>
+                    </tr> -->
+
+    <!-- </tbody>
+    </table> -->
 </div>

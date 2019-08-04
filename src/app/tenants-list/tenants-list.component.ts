@@ -15,6 +15,7 @@ export class TenantsListComponent implements OnInit{
   tenants: Tenant[];
   tenants2: Tenant2[];
   showSpinner: boolean = true;
+  rowControls:any[] = [];
 
   constructor(
     private blockSelectionService: BlockSelectionService,
@@ -35,6 +36,7 @@ export class TenantsListComponent implements OnInit{
 
       // fetching tenants data
       this.fetchTenantsData();
+     
   }
 
   onDelete(deletedTenant: Tenant2){
@@ -62,7 +64,9 @@ export class TenantsListComponent implements OnInit{
 
       //assigning tenants to allTenants2 of service for Edit tenant purpose
       this.tenantService.allTenants2 = responseData; 
-      
+      this.tenants2.forEach(t=>{
+        this.rowControls.push({'isCollapse':true});
+       }); 
       this.showSpinner = false;
     });
   }

@@ -1,0 +1,23 @@
+.css-table{
+    display: table;
+}
+
+.css-table-header-group{
+    display: table-header-group;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.css-table-cell{
+    display: table-cell;
+    padding: 0 6px;
+}
+
+.css-table-body{
+    display: table-row-group;
+}
+
+
+.css-table-row{
+    display: table-row;
+}
