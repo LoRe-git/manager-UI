@@ -18,9 +18,9 @@ export class TenantSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  getTenantResults(ev:any){
-    console.log(this.searchTxt);
-    this.httpService.searchTenants(this.searchTxt).subscribe(
+  getTenantResults(ev){
+    console.log(ev);
+    this.httpService.searchTenants(ev).subscribe(
       (response: Tenant2[]) => {
         this.tenants = response;
         this.showSpinner = false;

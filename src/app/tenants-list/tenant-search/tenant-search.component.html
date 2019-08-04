@@ -1,19 +1,19 @@
 <div class="row">
-    <input [(ngModel)]="searchTxt" type="text" name="seach" id="search"><button class = "btn btn-primary" onclick="getTenantResults(event)">Search</button>
+    <input [(ngModel)]="searchTxt" type="text" [value] = 'searchTxt' name="seach" id="search"><button class = "btn btn-primary" (click)="getTenantResults(searchTxt)">Search</button>
 </div>
 
 
 <div class="row">
         <app-spinner *ngIf="showSpinner"></app-spinner>
         <div *ngIf="!showSpinner">
-            <label for="search">Search:</label>
+            <!-- <label for="search">Search:</label>
             <input class="form-control" 
                 type="text" 
                 id="search" 
                 [(ngModel)]="searchTxt" 
                 placeholder="Please enter to search by name" 
                 autocomplete="off">
-            <br><br>
+            <br><br> -->
         
             <table class="table table-hover">
                 <thead>
