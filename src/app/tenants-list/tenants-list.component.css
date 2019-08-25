@@ -1,23 +1,88 @@
 .css-table{
-    display: table;
+    border: 1px solid #FFFFFF;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
 }
 
 .css-table-header-group{
-    display: table-header-group;
-    font-weight: bold;
-    padding: 0 10px;
+    font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+    padding: 3px 4px;
+    border: 1px solid rgb(185, 183, 183);
+    background: #C4C4C4;
 }
 
 .css-table-cell{
     display: table-cell;
-    padding: 0 6px;
+    font-size: 13px;
+    text-align: left;
 }
 
 .css-table-body{
     display: table-row-group;
+    /* border: 1px solid rgb(68, 67, 67); */
 }
 
 
-.css-table-row{
+.css-table-row:nth-child(even){
     display: table-row;
+    background: #E4E4E4;
+}
+
+.css-head-col-name{
+    padding: 3px 20px;
+}
+
+.css-head-col-city{
+  padding: 3px 20px; 
+}
+
+.css-head-col-mobile{
+  padding: 3px 30px 3px 35px; 
+}
+
+.css-head-col-branch{
+  padding: 3px 20px; 
+}
+
+.css-head-col-delete{
+  padding: 3px 20px; 
+}
+
+.css-head-col-edit{
+  padding: 3px 20px; 
+}
+
+.css-col-index{
+    padding: 3px; 
+}
+
+.css-col-name{
+    width: 100px;
+    padding: 3px 10px; 
+}
+
+.css-col-city{
+    width: 60px;
+}
+
+.css-col-mobile{
+  padding: 3px 30px 0px 10px; 
+}
+
+card-block{
+    position: absolute;
+}
+
+.card-text{
+    text-align: left;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: inherit;
+    height: inherit;
 }

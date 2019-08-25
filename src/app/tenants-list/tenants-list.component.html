@@ -6,16 +6,17 @@
             placeholder="Please enter to search by name" autocomplete="off">
         <br><br>
 
+        <div class="container wrapper">
 
         <div class="css-table">
             <div class="css-table-header-group">
-                <div class="css-table-cell">#</div>
-                <div class="css-table-cell">Name</div>
-                <div class="css-table-cell">City</div>
-                <div class="css-table-cell">Mobile</div>
-                <div class="css-table-cell">Branch</div>
-                <div class="css-table-cell"></div>
-                <div class="css-table-cell"></div>
+                    <div class="css-table-cell">#</div>
+                <div class="css-table-cell css-head-col-name">Name</div>
+                <div class="css-table-cell css-head-col-city">City</div>
+                <div class="css-table-cell css-head-col-mobile">Mobile</div>
+                <div class="css-table-cell css-head-col-branch">Branch</div>
+                <div class="css-table-cell css-head-col-delete">Delete</div>
+                <div class="css-table-cell css-head-col-edit">Edit</div>
             </div>
         </div>
 
@@ -24,19 +25,21 @@
                 <div class="css-table-body">
                     <div class="css-table-row" (click)="rowControls[index].isCollapse = !rowControls[index].isCollapse"
                         [attr.aria-controls]="'collapse_'+index">
-                        <div class="css-table-cell">{{index}}</div>
-                        <div class="css-table-cell">{{tenant.name}}</div>
-                        <div class="css-table-cell">{{tenant.address}}</div>
-                        <div class="css-table-cell">{{tenant.mobile}}</div>
-                        <div class="css-table-cell">{{tenant.bId}}</div>
+                        <div class="css-table-cell css-col-index">{{index}}</div>
+                        <div class="css-table-cell css-col-name">{{tenant.name}}</div>
+                        <div class="css-table-cell css-col-city">{{tenant.address}}</div>
+                        <div class="css-table-cell css-col-mobile">{{tenant.mobile}}</div>
+                        <div class="css-table-cell css-col-branch">{{tenant.bId}}</div>
+                        <div class="css-table-cell css-col-branch"> <button class="btn btn-link" (click) = "onDelete(tenant)">Delete</button></div>
+                        <div class="css-table-cell css-col-branch"> <button class="btn btn-link" (click) = "onEdit(tenant.id)">Edit</button></div>
                     </div>
                 </div>
             </div>
-            <div class="css-table">
-                <div class="css-table-body">
+            <div class="col-md-8">
+                <!-- <div class="css-table-body"> -->
                     <div id="collapse_{{index}}" [ngbCollapse]="rowControls[index].isCollapse">
                         <!--class="collapse in" -->
-                        <div class="css-table-row">
+                        <!-- <div class="css-table-row"> -->
                             <div class="card card-inverse" style="background-color: rgb(216, 214, 214); border-color: rgb(143, 142, 142);">
                                 <div class="card-block">
                                     <div class="row">
@@ -52,7 +55,9 @@
                                         </div>
                                         <div class="col-md-4 col-sm-4 text-center">
                                             <img class="btn-md" src="assets/images/defaultprofilepic.jpeg" alt="Tenant Picture goes here"
-                                                style="border-radius:40%;">
+                                            width="inherit"
+                                            height="inherit"    
+                                            style="border-radius:40%;">
                                         </div>
                                         <div class="col-md-4 col-sm-4 text-center">
                                             <h2><strong> 5.2K </strong></h2>
@@ -79,9 +84,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
+</div>
 
     <!-- 
     <table class="table table-hover">
