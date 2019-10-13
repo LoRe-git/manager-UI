@@ -3,7 +3,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Tenant } from '../model/tenant.model';
 import { Tenant2 } from '../model/tenant2.model';
 import { HttpService } from './http.service';
-
+import { CheckList } from '../model/checklist.model';
+import { FormGroup } from '@angular/forms';
 @Injectable()
 export class TenantService {
     tenantChangedEvent = new EventEmitter<Tenant[]>();
@@ -17,6 +18,7 @@ export class TenantService {
     ];
 
     allTenants2: Tenant2[];
+    hid: string = 'pmh';
 
     getAllTenants(){
         // return this.allTenants.slice();
@@ -80,4 +82,16 @@ export class TenantService {
         return new Tenant2(+tenantForm.id, tenantForm.phone, tenantForm.fullname, tenantForm.govid, new Date(tenantForm.doj), tenantForm.address, tenantForm.roomno, +tenantForm.amount, tenantForm.email, tenantForm.blockid);
     }
 
+    getTenantsByHid(hid: string){
+        return this.httpService.getTenantsByHid(hid);
+    }
+
+    checklistForm2Model(checklistForm): CheckList{
+        return new CheckList(+checklistForm.checklist_id, checklistForm.bid, checklistForm.checklist_date, checklistForm.incharge_name, +checklistForm.opening_balance, +checklistForm.admissions, +checklistForm.vacancies, +checklistForm.notice_periods, checklistForm.complaints, +checklistForm.collections_cash, +checklistForm.collections_ac, +checklistForm.collections_pending, +checklistForm.closing_balance, +checklistForm.water_tankers, checklistForm.misc);
+    }
+
+    saveChecklist(checklist: CheckList){
+        console.log("tenenta service:: " + checklist);
+        this.httpService.saveChecklist(checklist);
+    }
 }

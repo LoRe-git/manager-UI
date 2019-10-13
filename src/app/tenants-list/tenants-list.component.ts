@@ -35,7 +35,7 @@ export class TenantsListComponent implements OnInit{
       // );
 
       // fetching tenants data
-      this.fetchTenantsData();
+      this.fetchTenantsData(this.tenantService.hid);
      
   }
 
@@ -48,7 +48,7 @@ export class TenantsListComponent implements OnInit{
     this.tenantService.deleteTenant(deletedTenant.id);
 
     // refreshing tenants data
-    this.fetchTenantsData();
+    this.fetchTenantsData(this.tenantService.hid);
   }
 
   onEdit(id: string) {
@@ -58,8 +58,9 @@ export class TenantsListComponent implements OnInit{
     this.router.navigate(['tenants/update'], navigationExtras);
   }
 
-  fetchTenantsData(){
-    this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
+  fetchTenantsData(hid: string){
+    // this.tenantService.getAllTenants().subscribe( (responseData: Tenant2[]) => {
+    this.tenantService.getTenantsByHid(hid).subscribe( (responseData: Tenant2[]) => {
       this.tenants2 = responseData;
 
       //assigning tenants to allTenants2 of service for Edit tenant purpose

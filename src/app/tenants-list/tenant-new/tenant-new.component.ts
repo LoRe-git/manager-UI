@@ -21,14 +21,14 @@ export class TenantNewComponent implements OnInit {
   branches: Branch[];
   rooms: Room[];
   selectedBranch: string;
-
+  isBlockChanged: boolean = false;
   constructor(private httpService: HttpService, private tenantService: TenantService, private blockSelectionService: BlockSelectionService) { 
     // FormBuilder to gould form:another way to build form
   }
 
   ngOnInit() {
 
-    this.httpService.getBranches('pmh').subscribe((resposeData: Branch[]) => {
+    this.httpService.getBranches(this.tenantService.hid).subscribe((resposeData: Branch[]) => {
       console.log(resposeData);
       this.branches = resposeData;
       this.blockSelectionService.branches = this.branches;
@@ -89,11 +89,15 @@ export class TenantNewComponent implements OnInit {
   }
 
   getRooms(branchId: string){
+    this.isBlockChanged = true;
+    this.signUpForm.get('roomno').disable();
     console.log('room(): ',branchId);
     this.httpService.getRoomsByBid(branchId).subscribe(
       (responseData: Room[]) => {
         console.log(responseData);
         this.rooms = responseData;
+        this.isBlockChanged = false;
+        this.signUpForm.get('roomno').enable();
     },
     error => {
         console.log(error);

@@ -25,6 +25,7 @@ import { CustomFilterPipe } from './shared/filter.pipe';
 import { HttpService } from './shared/service/http.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AuthService } from './login/auth.service';
+import { ChecklistComponent } from './checklist/checklist.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AuthService } from './login/auth.service';
     TenantNewComponent,
     TenantSearchComponent,
     CustomFilterPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    ChecklistComponent
 
   ],
   imports: [

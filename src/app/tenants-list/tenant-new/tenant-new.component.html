@@ -114,7 +114,7 @@
       class="help-block">Please select branch!</span>
       </div>
       <div class="form-group">
-        <label for="roomno">Room Number:</label>
+        <label for="roomno">Room Number: <span *ngIf="isBlockChanged">Please wait while loading rooms!</span></label>
         <select class = "form-control" name="room-selection" id="roomno" (change)= "selectRoom($event)" formControlName="roomno">
           <option value="" disabled>Select room</option>
           <option *ngFor = "let room of rooms" [ngValue]="room.roomId">{{room.roomNo}}</option>
