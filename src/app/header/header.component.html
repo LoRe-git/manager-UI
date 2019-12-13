@@ -25,10 +25,15 @@
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul> -->
-       <div class="topnav-centered">
+        <div class="topnav-centered">
                 <h2 >Main Name</h2>
             </div> 
+        <div class="topnav-end">
+            <a *ngIf="isLoggedin" (click)="onLogout()" class="logout navbar-brand pull-right">Logout</a>
+        </div>
     </div>
+
+
 </nav>
 
 

@@ -15,8 +15,8 @@ export class LoginComponent{
 
     onSubmit(form: NgForm){
         console.log(form);
-        this.authService.isLoggedin = true;
+       localStorage.setItem('loggedin','true');
         form.reset();
-        // this.router.navigate(['/']);
+        this.router.navigate(['/']);
     }
 }

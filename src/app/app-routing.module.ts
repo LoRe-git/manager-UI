@@ -15,10 +15,10 @@ import { ChecklistComponent } from './checklist/checklist.component';
 
 const routes: Routes = [
   // {path:'', component:GraphsComponent},
-  {path:'', component:BlocksComponent},
+  {path:'', component:BlocksComponent, canActivate: [AuthGuardService]},
   {path:'login', component:LoginComponent},
   {path:'tenants', component:BlocksComponent, 
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     children:[
       {path:'all', component:TenantsListComponent},
       {path:'new', component:TenantNewComponent},

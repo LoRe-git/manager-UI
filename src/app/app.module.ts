@@ -26,6 +26,8 @@ import { HttpService } from './shared/service/http.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AuthService } from './login/auth.service';
 import { ChecklistComponent } from './checklist/checklist.component';
+import { AuthGuardService } from './login/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,7 @@ import { ChecklistComponent } from './checklist/checklist.component';
     FormsModule,
     NgbModule
   ],
-  providers: [BlockSelectionService, TenantService, HttpService, AuthService],
+  providers: [BlockSelectionService, TenantService, HttpService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
